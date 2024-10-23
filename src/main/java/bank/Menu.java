@@ -47,7 +47,43 @@ public class Menu {
     }
 
     private void showMenu(Customer customer, Account acc){
-        
+        int select = 0;
+        double amount = 0.0;
+
+        while (select != 4 && customer.isAuthenticated()) {
+            System.out.println("==============================================");
+            System.out.println("Please select one of the following options: ");
+            System.out.println("1: Deposit");
+            System.out.println("2: Withdraw");
+            System.out.println("3: Check Balance");
+            System.out.println("4: Exit");
+            System.out.println("==============================================");
+
+            select = scan.nextInt();
+
+            switch (select) {
+                case 1:
+                    System.out.println("How much you would like to deposit?");
+                    amount = scan.nextDouble();
+                    acc.deposit(amount);
+                    break;
+                case 2:
+                    System.out.println("How much you would like to withdraw?");
+                    amount = scan.nextDouble();
+                    acc.withdraw(amount);
+                    break;
+                case 3:
+                    System.out.println("Current balance: "+ acc.getBalance());
+                    break;
+                case 4:
+                    Authenticator.logout(customer);
+                    System.out.println("Thanks for banking at Globe Bank International!");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        }
 
     }
 }
