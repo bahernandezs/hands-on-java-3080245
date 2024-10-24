@@ -51,6 +51,7 @@ public class Menu {
         double amount = 0.0;
 
         while (select != 4 && customer.isAuthenticated()) {
+            DataSource.clearConsole();
             System.out.println("==============================================");
             System.out.println("Please select one of the following options: ");
             System.out.println("1: Deposit");
@@ -63,32 +64,43 @@ public class Menu {
 
             switch (select) {
                 case 1:
+                    DataSource.clearConsole();
                     System.out.println("How much you would like to deposit?");
                     amount = scan.nextDouble();
                     try {
                         acc.deposit(amount);
+                        System.out.println("Account balance updated. Press enter to continue...");
+                        scan.next();
                     } catch (Exception e) {
                         // TODO: handle exception
                         System.out.println(e.getMessage());
-                        System.out.println("Please try again.");
+                        System.out.println("Please try again. Press enter to contiue...");
+                        scan.next();
                     }
                     
                     break;
                 case 2:
+                    DataSource.clearConsole();
                     System.out.println("How much you would like to withdraw?");
                     amount = scan.nextDouble();
                     try {
                         acc.withdraw(amount);
+                        System.out.println("Account balance updated");
                     } catch (Exception e) {
                         // TODO: handle exception
                         System.out.println(e.getMessage());
-                        System.out.println("Please try again.");
+                        System.out.println("Please try again. Press enter to continue...");
+                        scan.next();
                     }
                     break;
                 case 3:
+                    DataSource.clearConsole();
                     System.out.println("Current balance: "+ acc.getBalance());
+                    System.out.println("Press enter to continue...");
+                    scan.next();
                     break;
                 case 4:
+                    DataSource.clearConsole();
                     Authenticator.logout(customer);
                     System.out.println("Thanks for banking at Globe Bank International!");
                     break;
