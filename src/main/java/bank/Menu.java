@@ -70,14 +70,20 @@ public class Menu {
                     } catch (Exception e) {
                         // TODO: handle exception
                         System.out.println(e.getMessage());
-                        System.out.println("");
+                        System.out.println("Please try again.");
                     }
                     
                     break;
                 case 2:
                     System.out.println("How much you would like to withdraw?");
                     amount = scan.nextDouble();
-                    acc.withdraw(amount);
+                    try {
+                        acc.withdraw(amount);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println(e.getMessage());
+                        System.out.println("Please try again.");
+                    }
                     break;
                 case 3:
                     System.out.println("Current balance: "+ acc.getBalance());
