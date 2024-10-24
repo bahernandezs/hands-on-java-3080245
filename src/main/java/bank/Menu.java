@@ -65,7 +65,14 @@ public class Menu {
                 case 1:
                     System.out.println("How much you would like to deposit?");
                     amount = scan.nextDouble();
-                    acc.deposit(amount);
+                    try {
+                        acc.deposit(amount);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println(e.getMessage());
+                        System.out.println("");
+                    }
+                    
                     break;
                 case 2:
                     System.out.println("How much you would like to withdraw?");

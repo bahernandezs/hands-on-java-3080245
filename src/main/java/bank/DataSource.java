@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DataSource {
     public static Connection connect(){
-        String db_file = "jdbc:sqlite:resources/bank.db";
+        String db_file = "jdbc:sqlite:hands-on-java-3080245\\resources\\bank.db";
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(db_file);
@@ -66,5 +66,22 @@ public class DataSource {
         }
 
         return acc;
+    }
+
+    public static void updateAccountBalance(int accountId, double balance){
+        
+    }
+
+    public static void clearConsole() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
